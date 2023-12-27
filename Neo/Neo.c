@@ -48,7 +48,7 @@ int main (int argc, char *argv[]) {
 
 	imprimirFila(tokens, tokenName_str);
 	
-	parsing(tokens);
+	//parsing(tokens);
 
 	/*	
 	int index = 0;

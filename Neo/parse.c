@@ -9,8 +9,10 @@ struct Token *observar(struct Token *t, int frente){
 }
 
 void parsing(struct Fila *f){
-	for(int i = *ini; i < num; i++)
-		switch (tokens[i]->nome){
+	struct Token *aux = f->ini;
+	for(int i = 0; i < f->tam; i++)
+		switch (aux->nome)
+		{
 			case semicolon:
 			break;
 
@@ -18,8 +20,8 @@ void parsing(struct Fila *f){
 			break;
 
 			case quit:
-				struct Token *aux1 = observar(tokens, 1);
-				struct Token *aux2 = observar(tokens, i + 2, num);
+				struct Token *aux1 = observar(aux, 1);
+				struct Token *aux2 = observar(aux, i + 2);
 				if(aux1->nome != _int || aux2->nome != semicolon)
 					exit(1);	
 			break;
