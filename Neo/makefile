@@ -3,8 +3,8 @@ parametros = -Wall
 
 all: $(nome)
 
-$(nome): Neo.o parse.o token.o fila.o
-	gcc -o $(nome) Neo.o fila.o parse.o token.o $(parametros)
+$(nome): Neo.o parse.o token.o fila.o generation.o
+	gcc -o $(nome) Neo.o fila.o parse.o token.o generation.o $(parametros)
 
 Neo.o: Neo.c
 	gcc -c Neo.c $(parametros)
@@ -17,6 +17,9 @@ parse.o: parse.h parse.c
 
 token.o: token.h token.c
 	gcc -c token.c $(parametros)
+
+generation.o: generation.h generation.c
+	gcc -c generation.c $(parametros)
 
 
 clean:

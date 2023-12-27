@@ -6,6 +6,7 @@
 #include"token.h"
 #include"fila.h"
 #include"parse.h"
+#include"generation.h"
 
 const char *tokenName_str[] = {";", "int", "quit", ""};
 
@@ -44,35 +45,26 @@ int main (int argc, char *argv[]) {
 	while(fscanf(inFile, "%c", &atual) == 1)
 		tokenmizar(inFile, tokens, atual, tokenName_str);
 
+	//fecha o arquivo original
 	fclose(inFile);
 
-	imprimirFila(tokens, tokenName_str);
+	//imprimirFila(tokens, tokenName_str);
 	
+	//realiza o processo de parsing com os tokens
 	parsing(tokens);
 
-	/*	
-	int index = 0;
-	parsing(tokens, numToken, &index);
+	criaCodigoAssembly(tokens);
 
+	destroiFila(tokens);
+
+	//verifica se o usuario selecionou o nome do executavel	
 	char *nome;
-
-	FILE *outFile = fopen("assembly.asm", "w");
-	fprintf(outFile, "global _start\n_start:\n");
-
-
-	for(int i = 0; i < numToken; i++){
-		if(tokens[i]->nome == quit && tokens[i + 1]->nome == _int && tokens[i+2]->nome == semicolon)
-			fprintf(outFile, "mov rax, 60\nmov rdi, %lld\nsyscall", tokens[i+1]->valor);
-		free(tokens[i]);
-	}
-	free(tokens);
-	fclose(outFile);
-	
 	if(argc == 3)
 		nome = argv[2];
 	else
 		nome = "out";
 
+	//cria uma string com o comando para nasm (linux)
 	char *str1 = malloc(sizeof(char) * (82 + strlen(nome)));
        	strcpy(str1,"nasm -felf64 assembly.asm && ld assembly.o -o ");
 	char *str2 = " && rm assembly.asm && rm assembly.o";
@@ -83,8 +75,6 @@ int main (int argc, char *argv[]) {
 	system(str1);
 
 	free(str1);
-	*/
 
-	destroiFila(tokens);
 	return 0;
 }
