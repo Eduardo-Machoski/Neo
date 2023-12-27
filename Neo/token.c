@@ -1,22 +1,51 @@
 #include"token.h"
 
+/* funcao criaToken: cria e inicializa um Token
+ * 
+ * parametros: 
+ * 	enum tokenName n (nome do token)
+ * 	long long valor (valor a ser contido no token)
+ * 	char *var (string contendo nome de variavel)
+ *
+ * retorno: struct Token * (ponteiro para struct Token)
+ */
 struct Token *criaToken(enum tokenName n, long long valor, char *var){
 	struct Token *aux;
+
+	//verifica se o malloc foi bem sucedido
 	if(!(aux = malloc(sizeof(struct Token)))){
 		printf("Erro malloc!\n");
 		exit(1);
 	}
+
+	//inicializa os valores do Token
 	aux->nome = n;
 	aux->valor = valor;
 	aux->var = var;
 	aux->proximo = NULL;
 	return aux;
 }
+
+
+/* funcao obterNomeToken: obtem o enum tokenName correto do token
+ * 
+ * parametros: 
+ * 	char *str (substring do arquivo original)
+ * 	const char *nomesToken[] (vetor de strings com os nomes dos Tokens)
+ *
+ * retorno: enum tokenName
+ */
 enum tokenName obterNomeToken(char *str, const char *nomesToken[]){
 	enum tokenName aux;
+
+	//percorre cada posicao de nomesTOken e compara com str
 	for(aux = 0; aux < __END; aux++)
+
+		//se for igual, retorna o tokenName correspondente
 		if(strcmp(str, nomesToken[aux]) == 0)
 			return aux;
+
+	//se nao for achado match, retorna var
 	return var;
 }
 
