@@ -29,13 +29,13 @@ enum tokenName obterNomeToken(char *str, const char *nomesToken[]){
  * 
  * parametros: 
  * 	FILE *inFile (ponteiro para arquivo de texto)
- * 	struct Fila *f (ponteiro para struct Fila)
+ * 	struct Lista *l (ponteiro para struct Fila)
  * 	char ini (char inicial de cada token)
  * 	const char *nomesToken[] (vetor de strings com os nomes dos Tokens)
  *
  * retorno: void
  */
-void tokenmizar(FILE *inFile, struct Fila *f, char ini, const char *nomesToken[]){
+void tokenmizar(FILE *inFile, struct Lista *l, char ini, const char *nomesToken[]){
 	
 	//retorna se ini for um espaço em branco
 	if(isspace(ini))
@@ -45,7 +45,6 @@ void tokenmizar(FILE *inFile, struct Fila *f, char ini, const char *nomesToken[]
 
 	//ini é uma letra do alfabeto
 	if(isalpha(ini)){
-
 
 		//aloca um espaço de 50 chars para verifica o nome do Token
 		char *str;
@@ -77,13 +76,13 @@ void tokenmizar(FILE *inFile, struct Fila *f, char ini, const char *nomesToken[]
 		switch (nome){
 			case var:
 				tokenAtual = criaToken(nome, 0, str);
-				enfileira(f, tokenAtual);
+				insereFimLista(l, tokenAtual);
 			break;
 
 			case quit:
 				tokenAtual = criaToken(nome, 0, NULL);
 				free(str);
-				enfileira(f, tokenAtual);
+				insereFimLista(l, tokenAtual);
 			break;
 
 			default:
@@ -102,13 +101,13 @@ void tokenmizar(FILE *inFile, struct Fila *f, char ini, const char *nomesToken[]
 
 		//cria e enfileira um token _int com valor de aux
 		tokenAtual = criaToken(_int, aux, NULL);
-		enfileira(f, tokenAtual);
+		insereFimLista(l, tokenAtual);
 	}
 
 	//cria e enfileira um token do tipo semicolon
 	if(ini == ';'){
 		tokenAtual = criaToken(semicolon, 0, NULL);;
-		enfileira(f, tokenAtual);
+		insereFimLista(l, tokenAtual);
 	} else if(!isspace(ini)){ //verificaçao de erro na criaçao de token
 		printf("Erro Criar Token!\n");
 		exit(1);

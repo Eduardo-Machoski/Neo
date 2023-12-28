@@ -3,7 +3,8 @@
 #include<string.h>
 #include<ctype.h>
 
-#include"fila.h"
+#include"token.h"
+#include"lista.h"
 #include"tokenmizar.h"
 #include"parse.h"
 #include"generation.h"
@@ -41,7 +42,7 @@ int main (int argc, char *argv[]) {
 
 	//le cada caracter no arquivo e transforma as palavras-chave em tokens
 	char atual;
-	struct Fila *tokens = criaFila();
+	struct lista *tokens = criaLista();
 	while(fscanf(inFile, "%c", &atual) == 1)
 		tokenmizar(inFile, tokens, atual, tokenName_str);
 
@@ -55,7 +56,7 @@ int main (int argc, char *argv[]) {
 
 	criaCodigoAssembly(tokens);
 
-	destroiFila(tokens);
+	destroiLista(tokens);
 
 	//verifica se o usuario selecionou o nome do executavel	
 	char *nome;

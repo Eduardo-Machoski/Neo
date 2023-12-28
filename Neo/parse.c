@@ -10,9 +10,9 @@ struct Token *observar(struct Token *t, int frente){
 	return aux;
 }
 
-void parsing(struct Fila *f){
-	struct Token *aux = f->ini;
-	for(int i = 0; i < f->tam; i++){
+void parsing(struct Lista *l){
+	struct Token *aux = l->sentinela->proximo;
+	for(int i = 0; i < l->tam; i++){
 		switch (aux->nome)
 		{
 			case semicolon:

@@ -1,9 +1,10 @@
 Neo/Neo
 Neo/Neo.o
 Neo/parse.o
-Neo/fila.o
 Neo/token.o
 Neo/tokenmizar.o
+Neo/generation.o
+Neo/lista.o
 
 teste.neo
 teste

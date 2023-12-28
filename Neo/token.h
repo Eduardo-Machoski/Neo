@@ -19,6 +19,7 @@ struct Token {
 	long long valor;
 	char *var;
 	struct Token *proximo;
+	struct Token *anterior;
 };
 
 /* funcao criaToken: cria e inicializa um Token

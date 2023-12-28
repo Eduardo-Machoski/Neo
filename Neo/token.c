@@ -23,6 +23,7 @@ struct Token *criaToken(enum tokenName n, long long valor, char *var){
 	aux->valor = valor;
 	aux->var = var;
 	aux->proximo = NULL;
+	aux->anterior = NULL;
 	return aux;
 }
 

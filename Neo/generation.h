@@ -5,15 +5,15 @@
 #include<stdio.h>
 #include<string.h>
 
-#include"fila.h"
+#include"lista.h"
 
 /* funcao criaCodigoAssembly: cria um arquivo em assembly a partir de tokens
  *
  * parametros:
- * 	struct Fila *tokens (ponteiro para struct Fila)
+ * 	struct Lista *tokens (ponteiro para struct Lista)
  *
  * retorno: void
  */
-void criaCodigoAssembly(struct Fila *tokens);
+void criaCodigoAssembly(struct Lista *tokens);
 
 #endif
