@@ -100,20 +100,6 @@ void imprimirFila(struct Fila *f, const char *nomesToken[]){
 	}
 }
 
-/* funcao destroiToken: destroi um Token e seus elementos
- * 
- * parametros: 
- * 	struct Token *t (ponteiro para struct Token)
- *
- * retorno: void
- */
-void destroiToken(struct Token *t){
-
-	//destroi a string var caso exista
-	if(t->var != NULL)
-		free(t->var);
-	free(t);
-}
 
 /* funcao destroiFila: destroi uma fila e todos os seus tokens
  * 

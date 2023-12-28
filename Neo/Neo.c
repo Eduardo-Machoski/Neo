@@ -3,8 +3,8 @@
 #include<string.h>
 #include<ctype.h>
 
-#include"token.h"
 #include"fila.h"
+#include"tokenmizar.h"
 #include"parse.h"
 #include"generation.h"
 

@@ -3,6 +3,7 @@ Neo/Neo.o
 Neo/parse.o
 Neo/fila.o
 Neo/token.o
+Neo/tokenmizar.o
 
 teste.neo
 teste

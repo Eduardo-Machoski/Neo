@@ -5,27 +5,14 @@
 #include<stdbool.h>
 #include<stdio.h>
 
+#include"token.h"
+
 struct Fila {
 	struct Token *ini;
 	struct Token *fim;
 	int tam;
 };
 
-enum tokenName {
-	semicolon = 0,
-	_int,
-	quit,
-	var,
-	__END
-};
-
-
-struct Token {
-	enum tokenName nome;
-	long long valor;
-	char *var;
-	struct Token *proximo;
-};
 
 
 /* funcao desinfileira: remove o primeiro token da fila
@@ -78,14 +65,6 @@ struct Fila *criaFila();
 void imprimirFila(struct Fila *f, const char *nomesToken[]);
 
 
-/* funcao destroiToken: destroi um Token e seus elementos
- * 
- * parametros: 
- * 	struct Token *t (ponteiro para struct Token)
- *
- * retorno: void
- */
-void destroiToken(struct Token *t);
 
 
 /* funcao destroiFila: destroi uma fila e todos os seus tokens

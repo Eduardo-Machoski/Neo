@@ -3,23 +3,43 @@
 
 #include<stdlib.h>
 #include<stdio.h>
-#include<string.h>
-#include<ctype.h>
+#include<stddef.h>
 
-#include "fila.h"
+enum tokenName {
+	semicolon = 0,
+	_int,
+	quit,
+	var,
+	__END
+};
 
-/* funcao tokenmizar: cria tokens a partir do arquivo original
+
+struct Token {
+	enum tokenName nome;
+	long long valor;
+	char *var;
+	struct Token *proximo;
+};
+
+/* funcao criaToken: cria e inicializa um Token
  * 
  * parametros: 
- * 	FILE *inFile (ponteiro para arquivo de texto)
- * 	struct Fila *f (ponteiro para struct Fila)
- * 	char ini (char inicial de cada token)
- * 	const char *nomesToken[] (vetor de strings com os nomes dos Tokens)
+ * 	enum tokenName n (nome do token)
+ * 	long long valor (valor a ser contido no token)
+ * 	char *var (string contendo nome de variavel)
+ *
+ * retorno: struct Token * (ponteiro para struct Token)
+ */
+struct Token *criaToken(enum tokenName n, long long valor, char *var);
+
+	
+/* funcao destroiToken: destroi um Token e seus elementos
+ * 
+ * parametros: 
+ * 	struct Token *t (ponteiro para struct Token)
  *
  * retorno: void
  */
-void tokenmizar(FILE *inFile, struct Fila *f, char ini, const char *nomesToken[]);
+void destroiToken(struct Token *t);
 
 #endif
-
-
