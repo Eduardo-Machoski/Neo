@@ -2,7 +2,7 @@
 #define PARSE_H 1
 
 #include"tokenmizar.h"
-#include"fila.h"
+#include"lista.h"
 
 
 /* funcao observar: observe o nome do token 'frente' numeros apos t

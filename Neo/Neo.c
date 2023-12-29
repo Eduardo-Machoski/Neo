@@ -42,7 +42,7 @@ int main (int argc, char *argv[]) {
 
 	//le cada caracter no arquivo e transforma as palavras-chave em tokens
 	char atual;
-	struct lista *tokens = criaLista();
+	struct Lista *tokens = criaLista();
 	while(fscanf(inFile, "%c", &atual) == 1)
 		tokenmizar(inFile, tokens, atual, tokenName_str);
 
@@ -66,10 +66,10 @@ int main (int argc, char *argv[]) {
 		nome = "out";
 
 	//cria uma string com o comando para nasm (linux)
-	char *str1 = malloc(sizeof(char) * (82 + strlen(nome)));
+	char *str1 = malloc(sizeof(char) * (90 + strlen(nome)));
        	strcpy(str1,"nasm -felf64 assembly.asm && ld assembly.o -o ");
 	char *str2 = " && rm assembly.asm && rm assembly.o";
-	
+
 	strcat(str1, nome);
 	strcat(str1, str2);
 	
